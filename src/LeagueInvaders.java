@@ -1,19 +1,23 @@
 import javax.swing.JFrame;
 
 public class LeagueInvaders {
-	JFrame j;
-	final int WIDTH = 500;
-	final int HEIGHT = 800;
+	JFrame frame;
+	final static int WIDTH = 500;
+	final static int HEIGHT = 800;
+	GamePanel panel;
 public static void main(String[] args) {
 	LeagueInvaders game = new LeagueInvaders();
 	game.setup();
 }
 public LeagueInvaders() {
-	 j = new JFrame();
+	 frame = new JFrame();
+	 panel = new GamePanel();
 }
 void setup() {
-	j.setSize(WIDTH, HEIGHT);
-	j.setVisible(true);
-	j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setSize(WIDTH, HEIGHT);
+	frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.add(panel);
+	frame.addKeyListener(panel);
 }
 }
