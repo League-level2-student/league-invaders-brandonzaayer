@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     	titleFont  = new Font("Arial", Font.PLAIN, 48);
     	Timer frameDraw = new Timer(1000/60,this);
     	frameDraw.start();
-    	r = new Rocketship(250, 600, 50, 50);
+    	r = new Rocketship(200, 500, 50, 50);
     }
 	@Override
 	public void paintComponent(Graphics g){

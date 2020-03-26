@@ -8,28 +8,39 @@ public class Rocketship extends GameObject{
 		// TODO Auto-generated constructor stub
 	}
 	public void right() {
-		if(LeagueInvaders.WIDTH - x < 491) {
+		if(x < 419) {
 		x+=speed;
     }
+		else{
+			System.out.println("Stay inside the boundaries");
+		}
 	}
 	public void left() {
-		if(LeagueInvaders.WIDTH - x > 9) {
+		if(x > 00) {
 		x-=speed;
     }
+		else{
+			System.out.println("Stay inside the boundaries");
+		}
 	}
 	public void up() {
-		if(LeagueInvaders.HEIGHT - y > 9) {
+		if(y > 0) {
 		y-=speed;
+		}
+		else{
+			System.out.println("Stay inside the boundaries");
 		}
     }
 	public void down() {
-		if(LeagueInvaders.HEIGHT - y < 791) {
+		if(y < LeagueInvaders.HEIGHT - 50) {
 		y+=speed;
     }
+		else{
+			System.out.println("Stay inside the boundaries");
+		}
 	}
 	void draw(Graphics g) {
 		g.setColor(Color.BLUE);
         g.fillRect(x, y, width, height);
-        System.out.println(x);
 	}
 }
