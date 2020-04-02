@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     	if (needImage) {
     	    loadImage ("space.png");
     	}
+    	startGame();
     }
 	@Override
 	public void paintComponent(Graphics g){
@@ -58,6 +59,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	void updateGameState() {
 		object.update();
+		if(r.isActive == false) {
+			currentState = END;
+		}
 	}
 	void updateEndState() {
 		
@@ -115,35 +119,59 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 		    if (currentState == END) {
 		        currentState = MENU;
+		        alienSpawn.stop();
 		    } else {
 		        currentState++;
+		        alienSpawn.start();
 		    }
 		}
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		    System.out.println("UP");
-		    r.up();
+		    r.up = true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
 		    System.out.println("DOWN");
-			    r.down();
+			    r.down = true;
 			    }
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 		    System.out.println("LEFT");
-			    r.left();
+			    r.left = true;
 			    }
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 		    System.out.println("RIGHT");
-			    r.right();
+			    r.right = true;
 			    }
+		if (e.getKeyCode()==KeyEvent.VK_SPACE && currentState == GAME) {
+			object.addProjectile(r.getProjectile());
+		}
 		}
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+		    System.out.println("UP");
+		    r.up = false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_DOWN) {
+		    System.out.println("DOWN");
+			    r.down = false;
+			    }
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		    System.out.println("LEFT");
+			    r.left = false;
+			    }
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		    System.out.println("RIGHT");
+			    r.right = false;
+			    }
 	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void startGame(){
+		 alienSpawn = new Timer(1000 , object);
+		 alienSpawn.start();
 	}
 }

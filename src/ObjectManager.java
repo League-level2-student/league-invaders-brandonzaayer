@@ -25,6 +25,9 @@ void update() {
 	for(int i = 0; i < projectiles.size(); i++){
 		projectiles.get(i).update();
 	}
+	rocket.update();
+	checkCollision();
+	purgeObjects();
 }
 void draw(Graphics g) {
 	rocket.draw(g);
@@ -53,4 +56,20 @@ public void actionPerformed(ActionEvent arg0) {
 	// TODO Auto-generated method stub
 	addAlien();
 }
+public void checkCollision(){
+	for(int i = aliens.size(); i > 0; i--){
+		if(rocket.collisionBox.intersects(aliens.get(i).collisionBox) == true) {
+			aliens.get(i).isActive = false;
+			rocket.isActive = false;
+		}
+		for(int j =  projectiles.size(); j > 0; j--){
+			if(projectiles.get(j).collisionBox.intersects(aliens.get(i).collisionBox) == true) {
+				aliens.get(i).isActive = false;
+				projectiles.get(j).isActive = false;
+			}
+			}
+	}
+		
+		
+	}
 }

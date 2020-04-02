@@ -40,5 +40,6 @@ public class Projectile extends GameObject{
 		if(y > LeagueInvaders.HEIGHT) {
 			isActive = false;
 		}
+		super.update();
 	}
 }

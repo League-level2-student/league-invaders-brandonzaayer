@@ -35,9 +35,11 @@ public class Alien extends GameObject{
 			g.fillRect(x, y, width, height);
 		}	}
 	public void update() {
+		super.update();
 		y+=speed;
 		if(y > LeagueInvaders.HEIGHT) {
 			isActive = false;
 		}
+		
 	}
 }
